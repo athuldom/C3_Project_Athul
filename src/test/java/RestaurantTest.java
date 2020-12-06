@@ -59,4 +59,17 @@ class RestaurantTest {
                 ()->restaurant.removeFromMenu("French fries"));
     }
     //<<<<<<<<<<<<<<<<<<<<<<<MENU>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+
+    //    <<<<<<<<<<<<<<<<<<<Total cost of items>>>>>>>>>>>>>>>>>>>>
+    @Test
+    public void adding_items_it_should_return_the_total_cost(){
+        restaurant.addToMenu("Sweet corn soup",119);
+        restaurant.addToMenu("Vegetable lasagne", 269);
+
+        List<String> items= Arrays.asList(new String[]{"Sweet corn soup", "Vegetable lasagne"});
+
+        assertEquals(388,restaurant.findTotalOfItems(items));
+    }
+    //    <<<<<<<<<<<<<<<<<<<Total cost of items>>>>>>>>>>>>>>>>>>>>
+
 }
