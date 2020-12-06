@@ -62,4 +62,25 @@ public class Restaurant {
     public String getName() {
         return name;
     }
+
+    //    method for calculating the total of selected items
+    public int findTotalOfItems(List<String> items){
+        List<Item> totalItems=new ArrayList<>();
+        int total=0;
+        for(String item: items){
+            for (Item menus: getMenu()){
+                if(item.equals(menus.getName())){
+                    totalItems.add(menus);
+                }
+            }
+        }
+        if(totalItems.size()>0){
+            for (Item selectedItem:totalItems){
+                String priceString = selectedItem.toString().split(":")[1];
+                String price = String.valueOf(priceString.split("[^a-z0-9]")[0]);
+                total += Integer.parseInt(price);
+            }
+        }
+        return total;
+    }
 }
